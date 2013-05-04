@@ -21,22 +21,15 @@ $(document).ready(function () {
                             });  
                         }else{
 
-                            var ks = data.keys;
-                            var vs = data.vals;
-
-                            $.each(ks, function(i, v){
-                                var type = "key" ;
-                                var elementStr = "input[value=" + v + "][class=" + type + "]";
-                                $(elementStr).before('<label>Hibás mező</label>');
-                            });       
-
-                            $.each(vs, function(i, v){
-                                var type = "val" ;
-                                var elementStr = "input[value=" + v + "][class=" + type + "]";
-                                $(elementStr).before('<label>Hibás mező</label>');
-                            });                    
-        
-        
+                            function checkErrors(datas){
+                                $.each(datas, function(i, v){
+                                    var elementStr = "input[value=" + v + "]";
+                                    $(elementStr).before('<label>Hibás mező</label>');
+                                });                                
+                            }           
+                            
+                            checkErrors(data);
+                            
                         }
 
                     }});
